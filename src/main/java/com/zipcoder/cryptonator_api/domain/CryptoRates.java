@@ -1,6 +1,6 @@
 package com.zipcoder.cryptonator_api.domain;
 
-import java.time.LocalDateTime;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * Created by leon on 1/22/18.
@@ -34,14 +33,14 @@ public class CryptoRates {
     @Column(name = "day_change")
     private double dayChange;
 
-    @NotBlank
+    @NotNull
     @Column(name = "last_checked_time")
-    private LocalDateTime lastCheckedTime;
+    private String lastCheckedTime;
 
     public CryptoRates() {
     }
 
-    public CryptoRates(String name, double price, double dayVolume, double dayChange, LocalDateTime lastCheckedTime) {
+    public CryptoRates(String name, double price, double dayVolume, double dayChange, String lastCheckedTime) {
         this.name = name;
         this.price = price;
         this.dayVolume = dayVolume;
@@ -81,11 +80,11 @@ public class CryptoRates {
         return dayChange;
     }
 
-    public void setLastCheckedTime(LocalDateTime lastCheckedTime) {
+    public void setLastCheckedTime(String lastCheckedTime) {
         this.lastCheckedTime = lastCheckedTime;
     }
 
-    public LocalDateTime getLastCheckedTime() {
+    public String getLastCheckedTime() {
         return lastCheckedTime;
     }
 }
